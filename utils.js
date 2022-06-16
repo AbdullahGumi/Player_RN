@@ -30,6 +30,7 @@ const renameFiles = async () => {
         .replaceAll('.', '_')
         .replaceAll(' ', '_')
         .replaceAll('-', '_')
+        .replaceAll("'", '')
         .replaceLast('_', '.')}`,
       err => err && console.log(err)
     );
@@ -75,14 +76,18 @@ const exportVideos = async () => {
           `export { default as  ${
             changeExt(file, 'mp4')
               .replaceAll('-', '_')
+              .replaceAll("'", '')
               .replaceAll('.', '_')
               .replaceAll('(', '_')
               .replaceAll(')', '_')
+              .replaceAll('[', '_')
+              .replaceAll(']', '_')
               .replaceAll('~', '_')
               .replaceAll(' ', '_')
               .split('_mp4')[0]
           } } from './videos/${changeExt(file, 'mp4')
             .replaceAll('-', '_')
+            .replaceAll("'", '')
             .replaceAll('.', '_')
             .replaceAll(' ', '_')
             .replaceLast('_', '.')}';`
@@ -103,14 +108,18 @@ exportVideos().then(() => {
           `${i === 0 ? '\n' : ''}export { default as  ${
             changeExt(file, 'png')
               .replaceAll('-', '_')
+              .replaceAll("'", '')
               .replaceAll('.', '_')
               .replaceAll('(', '_')
               .replaceAll(')', '_')
+              .replaceAll('[', '_')
+              .replaceAll(']', '_')
               .replaceAll('~', '_')
               .replaceAll(' ', '_')
               .split('_png')[0]
           }_thumbnail } from './thumbnails/${changeExt(file, 'png')
             .replaceAll('-', '_')
+            .replaceAll("'", '')
             .replaceAll('.', '_')
             .replaceAll(' ', '_')
             .replaceLast('_', '.')}';`

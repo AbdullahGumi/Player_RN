@@ -1,7 +1,6 @@
 # videos and thumbnails
 assets
-
-
+android/app/src/release
 # OSX
 #
 .DS_Store

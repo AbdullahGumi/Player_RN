@@ -110,7 +110,7 @@ export default function VideoScreen({route, navigation}) {
         onProgress={onProgress}
         paused={paused}
         ref={ref => (videoPlayer.current = ref)}
-        resizeMode={isFullScreen ? 'none' : 'cover'}
+        resizeMode={isFullScreen ? 'none' : 'contain'}
         source={video[1]}
         style={{height: isFullScreen ? '100%' : 250, width: '100%'}}
       />
