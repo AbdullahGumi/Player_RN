@@ -73,7 +73,7 @@ const exportVideos = async () => {
     const res = filtered
       .map(
         file =>
-          `export { default as  ${
+          `export { default as  ${!isNaN(file.replace('.mp4', '')) ? '_' : ''}${
             changeExt(file, 'mp4')
               .replaceAll('-', '_')
               .replaceAll("'", '')
@@ -106,6 +106,8 @@ exportVideos().then(() => {
       .map(
         (file, i) =>
           `${i === 0 ? '\n' : ''}export { default as  ${
+            !isNaN(file.replace('.png', '')) ? '_' : ''
+          }${
             changeExt(file, 'png')
               .replaceAll('-', '_')
               .replaceAll("'", '')

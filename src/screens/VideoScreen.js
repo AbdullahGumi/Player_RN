@@ -112,7 +112,7 @@ export default function VideoScreen({route, navigation}) {
         ref={ref => (videoPlayer.current = ref)}
         resizeMode={isFullScreen ? 'none' : 'contain'}
         source={video[1]}
-        style={{height: isFullScreen ? '100%' : 250, width: '100%'}}
+        style={{height: '100%', width: '100%'}}
       />
       <MediaControls
         isFullScreen={isFullScreen}
@@ -126,7 +126,11 @@ export default function VideoScreen({route, navigation}) {
         onSeeking={onSeeking}
         mainColor={'black'}
         playerState={playerState}
-        style={{height: isFullScreen ? '100%' : 250, width: '100%'}}
+        style={{
+          height: '100%',
+          width: '100%',
+          backgroundColor: 'red',
+        }}
         sliderStyle={
           isFullScreen && {
             containerStyle: styles.mediaControls,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {Dimensions, FlatList, Text, View} from 'react-native';
 import * as videos from '../../assets/videosIndex';
 import VideoFrame from '../components/VideoFrame';
 import Orientation from 'react-native-orientation-locker';
@@ -21,8 +21,8 @@ export default function HomeScreen({navigation, search}) {
       <FlatList
         initialNumToRender={10}
         contentContainerStyle={{
+          marginHorizontal: Dimensions.get('screen').width > 360 ? 50 : 0,
           padding: 10,
-          height: '100%',
         }}
         columnWrapperStyle={{justifyContent: 'space-between'}}
         data={Object.entries(videos).filter(item => item[0].includes(search))}
@@ -40,8 +40,8 @@ export default function HomeScreen({navigation, search}) {
             not found
           </Text>
         }
-        renderItem={({item, i}) => (
-          <VideoFrame key={i} item={item} navigation={navigation} />
+        renderItem={({item, index}) => (
+          <VideoFrame key={index} item={item} navigation={navigation} />
         )}
       />
     </View>

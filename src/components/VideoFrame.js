@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, Image, TouchableOpacity, View} from 'react-native';
+import {Text, Image, TouchableOpacity, View, Dimensions} from 'react-native';
 import * as thumbnails from '../../assets/thumbnailsIndex';
 
 const VideoFrame = ({navigation, item}) => {
@@ -13,6 +13,7 @@ const VideoFrame = ({navigation, item}) => {
       style={{
         position: 'relative',
         marginTop: 10,
+        marginBottom: Dimensions.get('screen').width > 360 ? 10 : 0,
         width: '45%',
         height: 150,
       }}>
