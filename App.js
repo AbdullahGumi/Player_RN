@@ -9,23 +9,19 @@ import './ignoreWarnings';
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from './src/screens/HomeScreen';
+import VideosScreen from './src/screens/VideosScreen';
 import VideoScreen from './src/screens/VideoScreen';
 import {Image, TextInput, View} from 'react-native';
+import CatergoriesScreen from './src/screens/CatergoriesScreen';
 
 const Stack = createNativeStackNavigator();
-
-// function SearchBar(props) {
-//   console.log(props);
-//   return <TextInput />;
-// }
 
 export default function App() {
   const [search, setSearch] = useState('');
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Catergories"
         screenOptions={{
           headerStyle: {
             backgroundColor: '#4c4c4c',
@@ -36,7 +32,7 @@ export default function App() {
           },
         }}>
         <Stack.Screen
-          name="Home"
+          name="Videos"
           options={{
             headerTitle: () => (
               <View
@@ -46,7 +42,7 @@ export default function App() {
                   alignItems: 'center',
                 }}>
                 <Image
-                  source={require('./assets/search.png')} //Change your icon image here
+                  source={require('./assets/search.png')}
                   style={{width: 25, height: 25, marginRight: 15}}
                 />
 
@@ -59,9 +55,10 @@ export default function App() {
               </View>
             ),
           }}>
-          {props => <HomeScreen {...props} search={search} />}
+          {props => <VideosScreen {...props} search={search} />}
         </Stack.Screen>
         <Stack.Screen name="Video" component={VideoScreen} />
+        <Stack.Screen name="Catergories" component={CatergoriesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

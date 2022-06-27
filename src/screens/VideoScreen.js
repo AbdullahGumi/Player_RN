@@ -82,15 +82,19 @@ export default function VideoScreen({route, navigation}) {
     }
     setIsFullScreen(!isFullScreen);
   };
-  const {video} = route.params;
+  const {
+    video: {item, folderName},
+  } = route.params;
   String.prototype.replaceAllTxt = function replaceAll(search, replace) {
     return this.split(search).join(replace);
   };
   useEffect(() => {
     navigation.setOptions({
-      title: video[0].replaceAllTxt('_', ' '),
+      title: item[0]
+        .split(folderName.folder.toUpperCase())[1]
+        .replaceAllTxt('_', ' '),
     });
-  }, [video]);
+  }, [item]);
 
   const videoPlayer = useRef(null);
   return (
@@ -111,7 +115,7 @@ export default function VideoScreen({route, navigation}) {
         paused={paused}
         ref={ref => (videoPlayer.current = ref)}
         resizeMode={isFullScreen ? 'none' : 'contain'}
-        source={video[1]}
+        source={item[1]}
         style={{height: '100%', width: '100%'}}
       />
       <MediaControls
